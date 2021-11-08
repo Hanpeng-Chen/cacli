@@ -2,17 +2,25 @@
   "name": "cacli",
   "version": "0.0.1",
   "description": "",
-  "bin": "./bin/www",
+  "bin": "bin/cacli",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "babel src -d dist",
+    "watch": "npm run compile --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
+    "chalk": "^4.1.2",
     "eslint": "^8.1.0",
-    "husky": "^7.0.4"
+    "husky": "^7.0.4",
+    "inquirer": "^8.2.0",
+    "log-symbols": "^5.0.0",
+    "ora": "^6.0.1"
   },
   "dependencies": {
     "commander": "^8.3.0"
