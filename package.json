@@ -2,7 +2,7 @@
   "name": "cacli",
   "version": "0.0.1",
   "description": "",
-  "bin": "bin/cacli",
+  "bin": "./bin/cacli.js",
   "main": "index.js",
   "scripts": {
     "compile": "babel src -d dist",
@@ -23,6 +23,7 @@
     "ora": "^6.0.1"
   },
   "dependencies": {
-    "commander": "^8.3.0"
+    "commander": "^8.3.0",
+    "fs-extra": "^10.0.0"
   }
 }

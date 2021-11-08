@@ -2,35 +2,27 @@ const program = require('commander')
 
 const { version } = require('./util/constants')
 
-const actionsMap = {
-  create: {
-    description: 'create project',
-    alias: 'cr',
-    examples: [
-      'cacli create <project-name>'
-    ]
-  },
-  config: {
-    description: 'config info',
-    alias: 'c',
-    examples: [
-      'cacli config get <k>',
-      'cacli config set <k> <v>'
-    ]
-  },
-  '*': {
-    description: 'command not found'
-  }
-}
+program
+  .command('create <project-name>')
+  .description('create a new project')
+  // -f or --force 为强制创建，如果创建的目录存在则直接覆盖
+  .option('-f, --force', 'overwrite target directory if it exist')
+  .action((name, options) => {
+    require('./lib/create.js')(name, options)
+  })
 
-Object.keys(actionsMap).forEach((action) => {
-  program
-    .command(action)
-    .description(actionsMap[action].description)
-    .action(() => {
-      console.log(action)
-    })
-})
+program
+  .command('config [value]')
+  .description('inspect and modify the config')
+  .option('-g, --get <path>', 'get value from option')
+  .option('-s, --set <path> <value>')
+  .option('-d, --delete <path>', 'delete option from config')
+  .action((value, options) => {
+    console.log(value, JSON.stringify(options))
+  })
 
+// 配置版本号信息
 program.version(version)
-  .parse(process.argv)
+
+// 解析用户执行命令传入参数
+program.parse(process.argv)
