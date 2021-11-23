@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs-extra')
 const inquirer = require('inquirer')
+const Generator = require('./util/Generator')
 
 module.exports = async function (name, options) {
   // 执行创建命令
@@ -15,13 +16,6 @@ module.exports = async function (name, options) {
     if (options.force) {
       await fs.remove(targetDir)
     } else {
-      // TODO: 询问用户是否确定要覆盖
-      // Vue CLI v4.5.12
-      // ? Target directory D:\personal_workspace\code\vue-demo already exists. Pick an action: (Use arrow keys)
-      // > Overwrite
-      //   Merge
-      //   Cancel
-      // console.log(`Target directory ${targetDir} already exists.`)
       let { action } = await inquirer.prompt([
         {
           name: 'action',
@@ -48,4 +42,7 @@ module.exports = async function (name, options) {
       }
     }
   }
+
+  const generator = new Generator(name, targetDir)
+  generator.create()
 }

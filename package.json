@@ -21,10 +21,12 @@
     "husky": "^7.0.4"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "chalk": "^4.1.2",
     "commander": "^8.3.0",
     "fs-extra": "^10.0.0",
-    "inquirer": "^8.2.0"
+    "inquirer": "^8.2.0",
+    "ora": "^5.4.1"
   },
   "husky": {
     "hooks": {
