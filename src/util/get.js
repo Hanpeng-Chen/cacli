@@ -17,10 +17,6 @@ async function getTagList(repo) {
   return axios.get(`https://api.github.com/repos/cacli-templates/${repo}/tags`)
 }
 
-// getRepoList().then(data => {
-//   console.log(JSON.stringify(data))
-// })
-
 module.exports = {
   getRepoList,
   getTagList
